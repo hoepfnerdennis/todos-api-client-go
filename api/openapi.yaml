@@ -1,0 +1,86 @@
+openapi: 3.0.1
+info:
+  title: Todo app API.
+  version: 1.0.0
+servers:
+- url: //localhost:3000/
+paths:
+  /todos/:
+    delete:
+      operationId: deleteTodo
+      parameters:
+      - in: query
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: Delete
+      summary: Delete todo.
+    get:
+      operationId: getTodos
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Todo'
+                type: array
+          description: List of todos.
+      summary: Fetch todos.
+    post:
+      operationId: createTodo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+        required: false
+      responses:
+        "201":
+          content: {}
+          description: Created
+      summary: Create todo.
+      x-codegen-request-body-name: todo
+    put:
+      operationId: updateTodo
+      parameters:
+      - in: query
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Todo'
+        required: false
+      responses:
+        "200":
+          content: {}
+          description: Updated ok
+      summary: Update todo.
+      x-codegen-request-body-name: todo
+components:
+  schemas:
+    Todo:
+      example:
+        details: details
+        id: 0.8008281904610115
+        title: title
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+        details:
+          type: string
+      required:
+      - id
+      - title
+      type: object
+x-original-swagger-version: "2.0"
