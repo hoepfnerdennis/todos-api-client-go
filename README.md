@@ -16,14 +16,13 @@ Install the following dependencies:
 
 ```shell
 go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
 Put the package under your project folder and add the following in import:
 
 ```golang
-import openapi "github.com/dnshpf/todos-api"
+import openapi "github.com/hoepfnerdennis/todos-api-client-go"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -75,14 +74,15 @@ ctx = context.WithValue(context.Background(), openapi.ContextOperationServerVari
 
 ## Documentation for API Endpoints
 
-All URIs are relative to _http://localhost:3000_
+All URIs are relative to *https://todo-api-hazel.vercel.app/api*
 
-| Class        | Method                                          | HTTP request       | Description  |
-| ------------ | ----------------------------------------------- | ------------------ | ------------ |
-| _DefaultApi_ | [**CreateTodo**](docs/DefaultApi.md#createtodo) | **Post** /todos/   | Create todo. |
-| _DefaultApi_ | [**DeleteTodo**](docs/DefaultApi.md#deletetodo) | **Delete** /todos/ | Delete todo. |
-| _DefaultApi_ | [**GetTodos**](docs/DefaultApi.md#gettodos)     | **Get** /todos/    | Fetch todos. |
-| _DefaultApi_ | [**UpdateTodo**](docs/DefaultApi.md#updatetodo) | **Put** /todos/    | Update todo. |
+| Class        | Method                                            | HTTP request           | Description       |
+| ------------ | ------------------------------------------------- | ---------------------- | ----------------- |
+| _DefaultApi_ | [**CreateTodo**](docs/DefaultApi.md#createtodo)   | **Post** /todos        | Add Todo          |
+| _DefaultApi_ | [**DeleteTodo**](docs/DefaultApi.md#deletetodo)   | **Delete** /todos/{id} | Delete Todo By Id |
+| _DefaultApi_ | [**GetTodoById**](docs/DefaultApi.md#gettodobyid) | **Get** /todos/{id}    | Find Todo By Id   |
+| _DefaultApi_ | [**GetTodos**](docs/DefaultApi.md#gettodos)       | **Get** /todos         | Find All Todos    |
+| _DefaultApi_ | [**UpdateTodo**](docs/DefaultApi.md#updatetodo)   | **Put** /todos/{id}    | Update Todo By Id |
 
 ## Documentation For Models
 

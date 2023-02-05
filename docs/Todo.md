@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **float32** |  | 
+**Id** | Pointer to **int32** |  | [optional] 
 **Title** | **string** |  | 
-**Details** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewTodo
 
-`func NewTodo(id float32, title string, ) *Todo`
+`func NewTodo(title string, ) *Todo`
 
 NewTodo instantiates a new Todo object
 This constructor will assign default values to properties that have it defined,
@@ -29,23 +29,28 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Todo) GetId() float32`
+`func (o *Todo) GetId() int32`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Todo) GetIdOk() (*float32, bool)`
+`func (o *Todo) GetIdOk() (*int32, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Todo) SetId(v float32)`
+`func (o *Todo) SetId(v int32)`
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *Todo) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetTitle
 
@@ -67,30 +72,30 @@ and a boolean to check if the value has been set.
 SetTitle sets Title field to given value.
 
 
-### GetDetails
+### GetDescription
 
-`func (o *Todo) GetDetails() string`
+`func (o *Todo) GetDescription() string`
 
-GetDetails returns the Details field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetDetailsOk
+### GetDescriptionOk
 
-`func (o *Todo) GetDetailsOk() (*string, bool)`
+`func (o *Todo) GetDescriptionOk() (*string, bool)`
 
-GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDetails
+### SetDescription
 
-`func (o *Todo) SetDetails(v string)`
+`func (o *Todo) SetDescription(v string)`
 
-SetDetails sets Details field to given value.
+SetDescription sets Description field to given value.
 
-### HasDetails
+### HasDescription
 
-`func (o *Todo) HasDetails() bool`
+`func (o *Todo) HasDescription() bool`
 
-HasDetails returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

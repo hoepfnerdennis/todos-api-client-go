@@ -1,21 +1,22 @@
 # \DefaultApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *https://todo-api-hazel.vercel.app/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTodo**](DefaultApi.md#CreateTodo) | **Post** /todos/ | Create todo.
-[**DeleteTodo**](DefaultApi.md#DeleteTodo) | **Delete** /todos/ | Delete todo.
-[**GetTodos**](DefaultApi.md#GetTodos) | **Get** /todos/ | Fetch todos.
-[**UpdateTodo**](DefaultApi.md#UpdateTodo) | **Put** /todos/ | Update todo.
+[**CreateTodo**](DefaultApi.md#CreateTodo) | **Post** /todos | Add Todo
+[**DeleteTodo**](DefaultApi.md#DeleteTodo) | **Delete** /todos/{id} | Delete Todo By Id
+[**GetTodoById**](DefaultApi.md#GetTodoById) | **Get** /todos/{id} | Find Todo By Id
+[**GetTodos**](DefaultApi.md#GetTodos) | **Get** /todos | Find All Todos
+[**UpdateTodo**](DefaultApi.md#UpdateTodo) | **Put** /todos/{id} | Update Todo By Id
 
 
 
 ## CreateTodo
 
-> CreateTodo(ctx).Todo(todo).Execute()
+> Todo CreateTodo(ctx).Todo(todo).Execute()
 
-Create todo.
+Add Todo
 
 ### Example
 
@@ -30,7 +31,7 @@ import (
 )
 
 func main() {
-    todo := *openapiclient.NewTodo(float32(123), "Title_example") // Todo |  (optional)
+    todo := *openapiclient.NewTodo("Title_example") // Todo | new todo
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -39,6 +40,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.CreateTodo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateTodo`: Todo
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.CreateTodo`: %v\n", resp)
 }
 ```
 
@@ -53,11 +56,11 @@ Other parameters are passed through a pointer to a apiCreateTodoRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **todo** | [**Todo**](Todo.md) |  | 
+ **todo** | [**Todo**](Todo.md) | new todo | 
 
 ### Return type
 
- (empty response body)
+[**Todo**](Todo.md)
 
 ### Authorization
 
@@ -66,7 +69,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -75,9 +78,9 @@ No authorization required
 
 ## DeleteTodo
 
-> DeleteTodo(ctx).Id(id).Execute()
+> Todo DeleteTodo(ctx, id).Execute()
 
-Delete todo.
+Delete Todo By Id
 
 ### Example
 
@@ -92,21 +95,27 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | 
+    id := int32(56) // int32 | Todo Id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.DeleteTodo(context.Background()).Id(id).Execute()
+    resp, r, err := apiClient.DefaultApi.DeleteTodo(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.DeleteTodo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `DeleteTodo`: Todo
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.DeleteTodo`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Todo Id | 
 
 ### Other Parameters
 
@@ -115,11 +124,11 @@ Other parameters are passed through a pointer to a apiDeleteTodoRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string** |  | 
+
 
 ### Return type
 
- (empty response body)
+[**Todo**](Todo.md)
 
 ### Authorization
 
@@ -128,7 +137,75 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTodoById
+
+> Todo GetTodoById(ctx, id).Execute()
+
+Find Todo By Id
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | Todo Id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetTodoById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetTodoById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTodoById`: Todo
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetTodoById`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Todo Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTodoByIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Todo**](Todo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -139,7 +216,7 @@ No authorization required
 
 > []Todo GetTodos(ctx).Execute()
 
-Fetch todos.
+Find All Todos
 
 ### Example
 
@@ -187,7 +264,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -196,9 +273,9 @@ No authorization required
 
 ## UpdateTodo
 
-> UpdateTodo(ctx).Id(id).Todo(todo).Execute()
+> Todo UpdateTodo(ctx, id).Todo(todo).Execute()
 
-Update todo.
+Update Todo By Id
 
 ### Example
 
@@ -213,22 +290,28 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | 
-    todo := *openapiclient.NewTodo(float32(123), "Title_example") // Todo |  (optional)
+    id := int32(56) // int32 | Todo Id
+    todo := *openapiclient.NewTodo("Title_example") // Todo | todo data
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.UpdateTodo(context.Background()).Id(id).Todo(todo).Execute()
+    resp, r, err := apiClient.DefaultApi.UpdateTodo(context.Background(), id).Todo(todo).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.UpdateTodo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateTodo`: Todo
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.UpdateTodo`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Todo Id | 
 
 ### Other Parameters
 
@@ -237,12 +320,12 @@ Other parameters are passed through a pointer to a apiUpdateTodoRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string** |  | 
- **todo** | [**Todo**](Todo.md) |  | 
+
+ **todo** | [**Todo**](Todo.md) | todo data | 
 
 ### Return type
 
- (empty response body)
+[**Todo**](Todo.md)
 
 ### Authorization
 
@@ -250,8 +333,8 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
