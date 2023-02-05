@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
 **Title** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Todo) GetId() int32`
+`func (o *Todo) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Todo) GetIdOk() (*int32, bool)`
+`func (o *Todo) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Todo) SetId(v int32)`
+`func (o *Todo) SetId(v string)`
 
 SetId sets Id field to given value.
 

@@ -135,7 +135,7 @@ func (a *DefaultApiService) CreateTodoExecute(r ApiCreateTodoRequest) (*Todo, *h
 type ApiDeleteTodoRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
-	id int32
+	id string
 }
 
 func (r ApiDeleteTodoRequest) Execute() (*Todo, *http.Response, error) {
@@ -149,7 +149,7 @@ DeleteTodo Delete Todo By Id
  @param id Todo Id
  @return ApiDeleteTodoRequest
 */
-func (a *DefaultApiService) DeleteTodo(ctx context.Context, id int32) ApiDeleteTodoRequest {
+func (a *DefaultApiService) DeleteTodo(ctx context.Context, id string) ApiDeleteTodoRequest {
 	return ApiDeleteTodoRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -236,7 +236,7 @@ func (a *DefaultApiService) DeleteTodoExecute(r ApiDeleteTodoRequest) (*Todo, *h
 type ApiGetTodoByIdRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
-	id int32
+	id string
 }
 
 func (r ApiGetTodoByIdRequest) Execute() (*Todo, *http.Response, error) {
@@ -250,7 +250,7 @@ GetTodoById Find Todo By Id
  @param id Todo Id
  @return ApiGetTodoByIdRequest
 */
-func (a *DefaultApiService) GetTodoById(ctx context.Context, id int32) ApiGetTodoByIdRequest {
+func (a *DefaultApiService) GetTodoById(ctx context.Context, id string) ApiGetTodoByIdRequest {
 	return ApiGetTodoByIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -434,7 +434,7 @@ func (a *DefaultApiService) GetTodosExecute(r ApiGetTodosRequest) ([]Todo, *http
 type ApiUpdateTodoRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
-	id int32
+	id string
 	todo *Todo
 }
 
@@ -455,7 +455,7 @@ UpdateTodo Update Todo By Id
  @param id Todo Id
  @return ApiUpdateTodoRequest
 */
-func (a *DefaultApiService) UpdateTodo(ctx context.Context, id int32) ApiUpdateTodoRequest {
+func (a *DefaultApiService) UpdateTodo(ctx context.Context, id string) ApiUpdateTodoRequest {
 	return ApiUpdateTodoRequest{
 		ApiService: a,
 		ctx: ctx,

@@ -19,7 +19,7 @@ var _ MappedNullable = &Todo{}
 
 // Todo struct for Todo
 type Todo struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Title string `json:"title"`
 	Description *string `json:"description,omitempty"`
 }
@@ -43,9 +43,9 @@ func NewTodoWithDefaults() *Todo {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Todo) GetId() int32 {
+func (o *Todo) GetId() string {
 	if o == nil || isNil(o.Id) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.Id
@@ -53,7 +53,7 @@ func (o *Todo) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Todo) GetIdOk() (*int32, bool) {
+func (o *Todo) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *Todo) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *Todo) SetId(v int32) {
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Todo) SetId(v string) {
 	o.Id = &v
 }
 
